@@ -6,3 +6,7 @@ data/
 __pycache__
 test.py.venv/
 venv/
+.env
+kaggle.json
+*.pem
+*.key
