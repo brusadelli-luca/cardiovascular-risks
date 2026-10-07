@@ -4,4 +4,5 @@ data/
 !requirements.txt
 *.ipynb_checkpoints
 __pycache__
-test.py
+test.py.venv/
+venv/
