@@ -4,7 +4,8 @@ data/
 !requirements.txt
 *.ipynb_checkpoints
 __pycache__
-test.py.venv/
+test.py
+.venv/
 venv/
 .env
 kaggle.json
