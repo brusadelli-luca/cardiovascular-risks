@@ -1,5 +1,13 @@
 *.csv
+data/
 *.txt
+!requirements.txt
 *.ipynb_checkpoints
 __pycache__
 test.py
+.venv/
+venv/
+.env
+kaggle.json
+*.pem
+*.key
