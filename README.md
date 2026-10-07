@@ -7,9 +7,22 @@ Code écrit en 2023 ; revue et corrections de 2026 faites avec Claude.
 ## Contenu
 
 - `main.ipynb` : le notebook principal (exploration, nettoyage, modèles, prédiction pour un patient fictif « Arthur »).
-- `data/cardio_train.csv` : les données (séparateur `;`, une ligne par patient, âge en jours).
+- `data/cardio_train.csv` : les données, à télécharger (voir ci-dessous) ; non versionnées.
 - `custom_class.py`, `custom_functions.py` : début d'un modèle de régression logistique écrit à la main (inachevé, non utilisé dans le notebook).
 - `requirements.txt` : les bibliothèques nécessaires.
+
+## Données
+
+Jeu de données « [Cardiovascular Disease dataset](https://www.kaggle.com/datasets/sulianova/cardiovascular-disease-dataset) » de Svetlana Ulianova sur Kaggle. Sa licence est indiquée « Unknown » : il n'est donc pas redistribué dans ce dépôt.
+
+Pour l'obtenir, le télécharger depuis la page Kaggle et placer `cardio_train.csv` dans le dossier `data/`, ou bien :
+
+```
+pip install kagglehub
+python -c "import kagglehub, shutil, os; p = kagglehub.dataset_download('sulianova/cardiovascular-disease-dataset'); os.makedirs('data', exist_ok=True); shutil.copy(os.path.join(p, 'cardio_train.csv'), 'data/')"
+```
+
+Format : séparateur `;`, une ligne par patient (70 000), âge en jours, colonne cible `cardio`.
 
 ## Installation et exécution
 
