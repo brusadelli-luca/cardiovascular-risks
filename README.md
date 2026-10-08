@@ -8,7 +8,7 @@ Code écrit en 2023 ; revue et corrections de 2026 faites avec Claude.
 
 - `main.ipynb` : le notebook principal (exploration, nettoyage, modèles, prédiction pour un patient fictif « Arthur »).
 - `data/cardio_train.csv` : les données, à télécharger (voir ci-dessous) ; non versionnées.
-- `custom_class.py`, `custom_functions.py` : début d'un modèle de régression logistique écrit à la main (inachevé, non utilisé dans le notebook).
+- `custom_class.py`, `custom_functions.py` : régression logistique écrite à la main (classe `RL`), prévue pour la section 5 du notebook mais pas encore utilisée.
 - `requirements.txt` : les bibliothèques nécessaires.
 
 ## Données
@@ -50,7 +50,7 @@ Les sorties (tableaux et graphiques) sont enregistrées dans le notebook : on pe
 
 ## Limites connues
 
-- La section 5 (modèle personnalisé) n'est pas terminée.
+- La section 5 (modèle personnalisé) n'a que ses titres : la classe `RL` est corrigée et fonctionne, mais le notebook ne l'utilise pas encore (voir « Étapes futures »).
 - Le modèle statsmodels est ajusté sans constante (pas d'ordonnée à l'origine).
 
 ## Pour aller plus loin
@@ -61,3 +61,13 @@ D'autres valeurs invraisemblables restent dans les données après le nettoyage 
 - 272 patients ont une tension diastolique (`ap_lo`) supérieure à la systolique (`ap_hi`), ce qui est physiologiquement impossible (probablement des valeurs inversées à la saisie).
 
 On pourrait les supprimer de la même façon que les petites tailles et observer l'effet sur les résultats.
+
+## Étapes futures envisagées : section 5 (modèle personnalisé)
+
+La classe `RL` (`custom_class.py`) est prête ; il reste à l'utiliser dans le notebook :
+
+1. **Entraînement** (« Custom Model Train ») : importer `RL`, reprendre les données normalisées de la section 4, ajouter une colonne de 1 pour l'ordonnée à l'origine (`np.c_[np.ones(len(X)), X]`), puis `RL().fit(X_train, y_train, learning_rate=0.1, n_iterations=1000)`.
+2. **Validation** (« Custom Model Validation ») : `predict` sur le jeu de validation et calcul de la précision.
+3. **Évaluation** (« Custom Model Evaluation ») : comparer avec le modèle scikit-learn de la section 4 (précision, matrice de confusion).
+
+Test fait hors notebook avec ces réglages : environ 72 % de précision sur le jeu de validation, comme le modèle scikit-learn.
